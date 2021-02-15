@@ -1,0 +1,108 @@
+<%- include('./partials/header.ejs') %>
+<% if (user) { %>
+<h5>Logged in as <%= user.email %> </h5>
+<% } %>
+<script src="/static/code.js" defer></script>
+<div class="row align-items-start">
+    <div class="col">
+        <h2>Morning</h2>
+        <%- include('./partials/errors.ejs') %>
+        <form method='POST' action='/behavior/reporting/morning'>
+            <% if (morning) { %>
+            <div class="form-text">
+                You have already reported today's morning!
+                You may still report again to update the previous information or submit information about another past
+                day.
+            </div>
+            <% } %>
+
+            <div class="mb-3">
+                <label for='sleep-quality' class="form-label"> Sleep quality</label>
+                <input type='range' min=1 max=5 id='sleep-quality' name='sleep-quality' value='<%= sleep_quality %>'
+                    class="form-range" aria-describedby="sleep-quality-help" />
+                <div id="sleep-quality-help" class="form-text">How well did you sleep from 1 (very bad) to 5 (very
+                    well)?</div>
+            </div>
+
+            <div class="mb-3">
+                <label for='sleep-duration' class="form-label">Sleep duration</label>
+                <input type='number' step='any' min=0 id='sleep-duration' name='sleep-duration'
+                    value='<%= sleep_duration %>' class="form-control" aria-describedby='sleep-duration-help' />
+                <div id="sleep-duration-help" class="form-text">Sleep duration can be entered as decimal.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for='mood-morning' class="form-label"> Overall mood</label>
+                <input type='range' id='mood-morning' min=1 max=5 name='mood-morning' value='<%= mood %>'
+                    class="form-range" aria-describedby="mood-morning-help" />
+                <div id="mood-morning-help" class="form-text">How did you feel in the morning from 1 (worst) to 5
+                    (best)? </div>
+            </div>
+
+            <div class="mb-3">
+                <label for='morning-date' class="form-label">Choose another day</label>
+                <input type='date' id='morning-date' name='morning-date' value='<%= date %>' class="form-control" />
+            </div>
+
+            <button type='submit' class="btn btn-outline-primary">Submit!</button>
+        </form>
+    </div>
+    <div class="col">
+        <h2>Evening</h2>
+        <form method='POST' action='/behavior/reporting/evening'>
+            <% if (evening) { %>
+            <div class="form-text">
+                You have already reported today's evening!
+                You may still report again to update the previous information or submit information about another past
+                day
+            </div>
+            <% } %>
+            <div class="mb-3">
+                <label for='exercise' class="form-label"> Time spent on sports and exercise</label>
+                <input type='number' step='any' id='exercise' min=0 name='exercise' value='<%= exercise %>'
+                    class="form-control" aria-describedby="exercise-help" />
+                <div id="exercise-help" class="form-text">TIme can be entered as decimal.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for='study' class="form-label"> Time spent on studying</label>
+                <input type='number' step='any' id='study' min=0 name='study' value='<%= study %>' class="form-control"
+                    aria-describedby="study-help" />
+                <div id="study-help" class="form-text">Time can be entered as decimal.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for='food-reqularity' class="form-label"> Reqularity of eating</label>
+                <input type='range' id='food-reqularity' min=1 max=5 name='food-reqularity' value='<%= food_req %>'
+                    class="form-range" aria-describedby="food-reqularity-help" />
+                <div id="food-reqularity-help" class="form-text">How reqularly did you eat from 1 (not at all) to 5
+                    (very reqularly)?</div>
+            </div>
+
+            <div class="mb-3">
+                <label for='food-quality' class="form-label"> Quality of eating</label>
+                <input type='range' id='food-quality' min=1 max=5 name='food-quality' value='<%= food_quality %>'
+                    class="form-range" aria-describedby="food-quality-help" />
+                <div id="food-quality-help" class="form-text">How good was your food from 1 (not at all) to 5 (very
+                    good)?</div>
+            </div>
+
+            <div class="mb-3">
+                <label for='mood-evening' class="form-label"> Overall mood</label>
+                <input type='range' id='mood-evening' min=1 max=5 name='mood-evening' value='<%= mood_evening %>'
+                    class="form-range" aria-describedby="mood-evening-help" />
+                <div id="mood-evening-help" class="form-text">How did you feel in the evening from 1 (worst) to 5
+                    (best)?</div>
+            </div>
+
+            <div class="mb-3">
+                <label for='evening-date' class="form-label">Choose another day</label>
+                <input type='date' id='evening-date' name='evening-date' value='<%= date_evening %>'
+                    class="form-control" />
+            </div>
+
+            <button type='submit' class="btn btn-outline-primary">Submit!</button>
+        </form>
+    </div>
+</div>
+<%- include('./partials/footer.ejs') %>

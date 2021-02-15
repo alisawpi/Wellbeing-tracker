@@ -1,0 +1,47 @@
+SITE AVAILABLE AT : 
+
+MY TELEGRAM HANDLE IN CASE YOU HAVE TROUBLE RUNNING THIS : alisawp
+
+GUIDELINES TO RUN THE APP: 
+1. CREATE THE DATABASE WITH THE STATEMENTS PROVIDED BELOW
+2. UNZIP THE APP.ZIP 
+3. GO TO FILE /config/config.js AND PUT IN YOUR OWN DATABASE CREDENTIALS AT THE ELSE STATEMENT WHERE IT SAYS 
+config.database = {
+   hostname: 'your hostaname here', 
+   database: "your database",
+   user: "your database user",
+   password: "your database password",
+   port:  your port number or 5432 if you use elephant sql
+} 
+4. OPEN TERMINAL AND NAVIGATE TO THE ROOT OF THE PROJECT FOLDER
+5. RUN COMMAN 'deno run --allow-net --allow-read --allow-env --unstable app.js' 
+6. OPEN YOUR PROWSER AT 'http://localhost:7777/'
+
+GUIDELINES TO RUN THE TESTS: 
+1. OPEN TERMINAL AND NAVIGATE TO THE ROOT OF THE PROJECT FOLDER
+2. DO NOT START THE APP AS PREVIOUSLY
+3. RUN COMMAND 
+
+BELOW ARE THE CREATE TABLE STATEMENTS 
+IN ADDITION I HAVE INCLUDED SOME INSERT STATEMENTS SO YOU HAVE SOME INITIAL DATA WHILE TESTING THE APP
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(320) NOT NULL UNIQUE,
+  password CHAR(60) NOT NULL
+);
+
+CREATE TABLE behaviour (
+    id SERIAL PRIMARY KEY,
+    sleep_quality INT,
+    sleep_duration FLOAT,
+    food_req INT,
+    food_quality INT,
+    study FLOAT,
+    exercise FLOAT,
+    mood INT,
+    mood_evening INT,
+    user_id INTEGER REFERENCES users(id) NOT NULL,
+    date DATE
+);
+

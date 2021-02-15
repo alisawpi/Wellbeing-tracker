@@ -1,0 +1,27 @@
+<%- include('./partials/header.ejs') %>
+<% if (user) { %>
+<h5>
+    <small class="text-muted">
+        Logged in as <%= user.email %>
+    </small>
+</h5>
+<% } %>
+<h6 class='display-6'> Wellness tracker </h6>
+<p class="lead"> This application allows you to track your daily wellbeing and shows weekly and monthly statistics.
+    You can track sleep quality and duration, mood, time spent studying and exercising, eating reqularity and quality of
+    food you are eating.
+</p>
+
+<h6>Our users' average mood: </h6>
+<% if (yesterday && today) { %>
+<h6> <small> Today <%= today %> </small></h6>
+<h6> <small> Yesterday <%= yesterday %> </small></h6>
+<% if (yesterday > today ) { %>
+<p> Things are looking gloomy today</p>
+<% } else { %>
+<p> Things are looking bright today</p>
+<% } %>
+<% } else { %>
+<p> No data available </p>
+<% } %>
+<%- include('./partials/footer.ejs') %>

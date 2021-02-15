@@ -1,0 +1,20 @@
+<%- include('./partials/header.ejs') %>
+<h1>Register!</h1>
+<%- include('./partials/errors.ejs') %>
+<form method="POST" action="/auth/register">
+    <div class="mb-3">
+        <label for='register-email' class="form-label">Email address</label>
+        <input type="email" id='register-email' name="email" value="<%= email %>" class="form-control" placeholder="example@mail.com"/>
+    </div>
+    <div class="mb-3">
+        <label for='register-password' class="form-label"> Password</label>
+        <input type="password" id='register-password' name="password" class="form-control" aria-describedby="pwdHelp"  placeholder="password"/>
+        <div id="pwdHelp" class="form-text">Your password should be at least 4 characters long.</div>
+    </div>
+    <div class="mb-3">
+        <label for='verification' class="form-label"> Repeat password</label>
+        <input type="password" id='verification' name="verification" class="form-control" placeholder="password again"/>
+    </div>
+    <input type="submit" class="btn btn-outline-primary" value="Submit!" />
+</form>
+<%- include('./partials/footer.ejs') %>

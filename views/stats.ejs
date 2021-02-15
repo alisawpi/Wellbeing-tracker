@@ -1,0 +1,116 @@
+<%- include('./partials/header.ejs') %>
+<% if (user) { %>
+    <h5>
+        <small class="text-muted">
+            Logged in as <%= user.email %>
+        </small>
+    </h5>
+    <% } %>
+<h4>Summary of your wellbeing!</h4>
+<div class="row align-items-start">
+    <div class="col">
+        <h6>Weekly</h6>
+        <ul class='list-group'>
+            <li class="list-group-item"> Sleep quality:
+                <% if (quality_weekly) { %>
+                <%= quality_weekly %>
+                <% } else { %>
+                No data available
+                <% } %>
+            </li>
+            <li class="list-group-item"> Sleep duration:
+                <% if (duration_weekly) { %>
+                <%= duration_weekly  %>
+                <% } else { %>
+                No data available
+                <% } %>
+            </li>
+            <li class="list-group-item"> Time spent on exercise and sports:
+                <% if (exercise_weekly) { %>
+                <%= exercise_weekly  %>
+                <% } else { %>
+                No data available
+                <% } %>
+            </li>
+            <li class="list-group-item"> Time spent on studying:
+                <% if (study_weekly) { %>
+                <%= study_weekly  %>
+                <% } else { %>
+                No data available
+                <% } %>
+            </li>
+            <li class="list-group-item"> 
+                Overall mood:
+                <% if (mood_weekly) { %>
+                <%= mood_weekly  %>
+                <% } else { %>
+                No data available
+                <% } %>
+            </li>
+        </ul>
+        <form method='POST' action='/behavior/summary/week'>
+            <div class='form-text'> Showing last weeks summary by default </div>
+            <div class="mb-3">
+                <label for='week-stats' class='form-label'>Choose another week</label>
+                <input type='week' id='week-stats' name='week-stats' class='form-control' />
+            </div>
+
+            <button type='submit' class="btn btn-outline-primary">Choose</button>
+        </form>
+    </div>
+    <div class='col'>
+        <h6> Monthly </h6>
+        <ul class='list-group'>
+            <li class="list-group-item"> 
+                Sleep quality:
+                <% if (quality_monthly) { %>
+                <%= quality_monthly  %>
+                <% } else { %>
+                No data available
+                <% } %>
+            </li>
+            <li class="list-group-item">
+                 Sleep duration:
+                <% if (duration_monthly) { %>
+                <%= duration_monthly  %>
+                <% } else { %>
+                No data available
+                <% } %>
+            </li>
+            <li class="list-group-item"> 
+                Time spent on exercise and sports:
+                <% if (exercise_monthly) { %>
+                <%= exercise_monthly  %>
+                <% } else { %>
+                No data available
+                <% } %>
+            </li>
+            <li class="list-group-item">
+                 Time spent on studying:
+                <% if (study_monthly) { %>
+                <%= study_monthly  %>
+                <% } else { %>
+                No data available
+                <% } %>
+            </li>
+            <li class="list-group-item">
+                 Overall mood:
+                <% if (mood_monthly) { %>
+                <%= mood_monthly  %>
+                <% } else { %>
+                No data available
+                <% } %>
+            </li>
+        </ul>
+        <form method='POST' action='/behavior/summary/month'>
+            <div class='form-text'> Showing last months summary by default </div>
+            <div class="mb-3">
+                <label for='month-stats' class="form-label">Choose another month</label>
+                <input type='month' id='month-stats' name='month-stats' class="form-control" />
+            </div>
+
+            <button type='submit' class="btn btn-outline-primary">Choose</button>
+        </form>
+    </div>
+</div>
+<%- include('./partials/footer.ejs') %>
